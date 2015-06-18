@@ -5,7 +5,7 @@ var karmabot = require('./karmabot');
 var connection = require('./connectiontester');
 var redis = require('redis')
 var app = express();
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
  
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
