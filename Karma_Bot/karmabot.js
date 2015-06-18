@@ -107,6 +107,7 @@ function addValue(item, value){
 			client.SET(item, parseInt(res)+value);
 		});
 	} else {
-		client.SET(item, value, redis.print);
+		//client.SET(item, value, redis.print);
+		client.SET(item, "0", redis.print);
 	}
 }
