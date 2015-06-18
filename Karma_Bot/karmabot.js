@@ -52,7 +52,7 @@ function karma(item){
 		client.GET(item, function(err,res){
 			value=String.toString(res); 
 			currentKarmaValue = res; 
-			console.log("client.GET-res: " + res);
+			console.log("client.GET-res of " + item + ": "+ res);
 			console.log("Delivering Payload...");
 			returnText = "karma: " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
