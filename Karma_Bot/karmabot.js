@@ -30,7 +30,7 @@ module.exports = function (req, res, next) {
 		//setTimeout(function(){ deliverPayload();}, 250);
 	} else {
 		returnText = "\"" + messageText + "\" is not a valid command."
-		botPrePayload = {text : ""};
+		botPrePayload = {text : returnText};
 		deliverPayload();
 		//setTimeout(function(){ deliverPayload();}, 250);
 	}
