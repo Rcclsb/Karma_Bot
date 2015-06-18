@@ -44,8 +44,10 @@ function deliverPayload() {
     console.log("Sending Payload... ");
     // avoid infinite loop
     if (messageText !== returnText) {
+        console.log("Payload Out.");
         return moduleExportsRes.status(200).json(botPayload);
     } else {
+        console.log("Payload Denied.");
         return moduleExportsRes.status(200).end();
     }
 }
