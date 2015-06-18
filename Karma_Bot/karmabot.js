@@ -79,7 +79,7 @@ function karmaVote(item){
 			currentKarmaValue = res; 
 			console.log("client.GET-res of " + item + ": "+ res);
 			console.log("Preparing Payload...");
-			returnText = "Thanks! " + decodeURIComponent(item) + "'s karma is " + currentKarmaValue; 
+			returnText = "Thanks! " + decodeURIComponent(item) + "'s karma is now " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
 		});
 		console.log("cKV: "+ value);
