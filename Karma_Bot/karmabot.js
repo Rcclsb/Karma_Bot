@@ -107,6 +107,9 @@ function addValue(item, value){
 			client.SET(item, parseInt(res)+value);
 		});
 	} else {
-		client.SET(item, toString(value));
+		client.SET(item, "0");
+		client.GET(item, function(err, res){
+			client.SET(item, parseInt(res)+value);
+		});
 	}
 }
