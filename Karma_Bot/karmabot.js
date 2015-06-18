@@ -23,14 +23,14 @@ module.exports = function (req, res, next) {
         processKarmaMessage(messageText);
         setTimeout(function () {
             deliverPayload();
-        }, 250);
+        }, 300);
     } else if (processIsVoteMessage(messageText) !== "null") {
         processVoteMessage(messageText);
         setTimeout(function () {
             karmaVote(messageText.substring(0, messageText.length - 2));
             setTimeout(function () {
                 deliverPayload();
-            }, 250);
+            }, 300);
         }, 250);
     } else {
         returnText = "\"" + messageText + "\" is not a valid command.";
