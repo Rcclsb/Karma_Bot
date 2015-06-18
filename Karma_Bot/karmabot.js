@@ -102,7 +102,7 @@ function vote(item, ballot){
 }
 
 function addValue(item, value){
-	console.log("Adding Path");
+	console.log("Adding Path: " + client.EXISTS(item));
 	if(client.EXISTS(item)==1){
 		client.GET(item, function(err, res){	
 			client.SET(item, parseInt(res)+value);
