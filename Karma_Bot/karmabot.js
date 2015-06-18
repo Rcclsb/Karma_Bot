@@ -1,6 +1,7 @@
 var positiveKey = encodeURIComponent("++");
 var negativeKey = encodeURIComponent("--");
 var karmaGetKey = encodeURIComponent("karma value ");
+var slackBotCall = "Karmabot%20";
 var redis = require("redis");
 var client = redis.createClient(6379, '52.25.18.14',{parser: "javascript", max_attempts:5, auth_pass:"-+25y.MV"});
 var currentKarmaValue = "null0";
@@ -13,7 +14,7 @@ client.on("error", function (err) {console.log("REDIS CLIENT ERROR--> " + err);}
 
 
 module.exports = function (req, res, next) {
-	messageText = req.body.text.replace("  ", "++");
+	messageText = req.body.text.replace("  ", "++").substr(0, slackBotCall.length);
 	returnText = "defaultReturnText";
 	botPrePayload = {};
 	moduleExportsRes=res;
@@ -78,9 +79,9 @@ function processVoteMessage(msg){
 
 function processIsVoteMessage(msg){
 	var message = encodeURIComponent(msg);
-	if(message.search(positiveKey)>-1 && message.substring(0,message.search(positiveKey)).search(" ") == -1){
+	if(message.search(positiveKey)>-1 && message.substring(0,message.search(positiveKey)).search("%20") == -1){
 		return "++";
-	} else if(message.search(negativeKey)>-1 && message.substring(0,message.search(negativeKey)).search(" ") == -1){
+	} else if(message.search(negativeKey)>-1 && message.substring(0,message.search(negativeKey)).search("%20") == -1){
 		return "--";
 	} else {
 		return "null";
