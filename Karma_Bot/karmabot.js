@@ -24,8 +24,10 @@ module.exports = function (req, res, next) {
 		setTimeout(function(){ deliverPayload();}, 250);
 	} else if (processIsVoteMessage(messageText)!="null"){
 		processVoteMessage(messageText);
-		setTimeout(function(){ karmaVote(messageText.substring(0,messageText.length-2));}, 250);
-		setTimeout(function(){ deliverPayload();}, 250);
+		setTimeout(function(){ 
+			karmaVote(messageText.substring(0,messageText.length-2));
+			setTimeout(function(){ deliverPayload();}, 250);
+		}, 250);	
 	} else {
 		returnText = "\"" + messageText + "\" is not a valid command."
 		botPrePayload = {text : returnText};
