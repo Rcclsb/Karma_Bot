@@ -110,6 +110,7 @@ function addValue(item, value){
 			});
 		} else {
 			console.log("Initiating Path");
+			console.log("Creating: " + item + "...")
 			//client.SET(item, value, redis.print);
 			client.SET(item, "0", redis.print);
 		}
