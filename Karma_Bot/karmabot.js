@@ -39,6 +39,7 @@ module.exports = function (req, res, next) {
 
 function deliverPayload(){
 	botPayload = botPrePayload;
+	console.log("Sending Payload... ")
 	// avoid infinite loop
 	if (messageText !== returnText) {
 	  return moduleExportsRes.status(200).json(botPayload);
@@ -54,7 +55,7 @@ function karma(item){
 			value=String.toString(res); 
 			currentKarmaValue = res; 
 			console.log("client.GET-res of " + item + ": "+ res);
-			console.log("Delivering Payload...");
+			console.log("Preparing Payload...");
 			returnText = decodeURIComponent(item) + "'s karma is " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
 		});
@@ -75,7 +76,7 @@ function karmaVote(item){
 			value=String.toString(res); 
 			currentKarmaValue = res; 
 			console.log("client.GET-res of " + item + ": "+ res);
-			console.log("Delivering Payload...");
+			console.log("Preparing Payload...");
 			returnText = "Thanks! " + decodeURIComponent(item) + "'s karma is " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
 		});
