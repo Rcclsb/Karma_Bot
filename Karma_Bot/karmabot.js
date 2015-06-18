@@ -57,7 +57,7 @@ function karma(item){
 			currentKarmaValue = res; 
 			console.log("client.GET-res of " + item + ": "+ res);
 			console.log("Delivering Payload...");
-			returnText = item + "'s karma is " + currentKarmaValue; 
+			returnText = decodeURIComponent(item) + "'s karma is " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
 		});
 		console.log("cKV: "+ value);
