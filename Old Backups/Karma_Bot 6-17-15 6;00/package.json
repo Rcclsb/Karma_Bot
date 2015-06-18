@@ -1,0 +1,28 @@
+{
+  "name": "karmabot",
+  "version": "1.0.0",
+  "description": "Help people be nice through the power of bhudism.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Karma_Bot"
+  },
+  "keywords": [
+    "karmabot",
+    "karma",
+    "bot",
+    "slackbot",
+    "chat",
+    "vote"
+  ],
+  "author": "Roberto Cohen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.0",
+    "express": "^4.x.x",
+    "redis": "^0.12.1"
+  }
+}
