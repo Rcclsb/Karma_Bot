@@ -1,5 +1,3 @@
-
-//These variables will eventually be removed]
 var positiveKey = encodeURIComponent("++");
 var negativeKey = encodeURIComponent("--");
 var karmaGetKey = encodeURIComponent("karma value ");
@@ -109,6 +107,6 @@ function addValue(item, value){
 			client.SET(item, parseInt(res)+value);
 		});
 	} else {
-		client.SET(item, value);
+		client.SET(String.toString(item), String.toString(value));
 	}
 }
