@@ -102,14 +102,16 @@ function vote(item, ballot){
 }
 
 function addValue(item, value){
-	console.log("Adding Path: " + client.EXISTS(item));
-	if(client.EXISTS(item)==1){
-		client.GET(item, function(err, res){	
-			client.SET(item, parseInt(res)+value);
-		});
-	} else {
-		console.log("Initiating Path");
-		//client.SET(item, value, redis.print);
-		client.SET(item, "0", redis.print);
-	}
+	client.EXISTS(item, function(err, res){
+		if(res == 1){
+			console.log("Adding Path");
+			client.GET(item, function(err, res){	
+				client.SET(item, parseInt(res)+value);
+			});
+		} else {
+			console.log("Initiating Path");
+			//client.SET(item, value, redis.print);
+			client.SET(item, "0", redis.print);
+		}
+	}	
 }
