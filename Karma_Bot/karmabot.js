@@ -42,6 +42,7 @@ module.exports = function (req, res, next) {
 function deliverPayload() {
     botPayload = botPrePayload;
     console.log("Sending Payload... ");
+    console.log("Payload Check: " + botPayload);
     // avoid infinite loop
     if (messageText !== returnText) {
         console.log("Payload Out.");
