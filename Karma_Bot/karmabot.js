@@ -29,7 +29,8 @@ module.exports = function (req, res, next) {
 		deliverPayload();
 		//setTimeout(function(){ deliverPayload();}, 250);
 	} else {
-		botPrePayload = {};
+		returnText = "\"" + messageText + "\" is not a valid command."
+		botPrePayload = {text : ""};
 		deliverPayload();
 		//setTimeout(function(){ deliverPayload();}, 250);
 	}
@@ -56,7 +57,7 @@ function karma(item){
 			currentKarmaValue = res; 
 			console.log("client.GET-res of " + item + ": "+ res);
 			console.log("Delivering Payload...");
-			returnText = "karma: " + currentKarmaValue; 
+			returnText = item + "'s karma is " + currentKarmaValue; 
 			botPrePayload = {text : returnText};
 		});
 		console.log("cKV: "+ value);
