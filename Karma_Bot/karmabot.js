@@ -23,11 +23,9 @@ module.exports = function (req, res, next) {
 		processKarmaMessage(messageText);
 		setTimeout(function(){ deliverPayload();}, 250);
 	} else if (processIsVoteMessage(messageText)!="null"){
-		returnText = "Thanks for your vote!";
-		botPrePayload = {text : returnText};
 		processVoteMessage(messageText);
-		deliverPayload();
-		//setTimeout(function(){ deliverPayload();}, 250);
+		karmaVote(messageText.substring(0,messageText.length+2))
+		setTimeout(function(){ deliverPayload();}, 250);
 	} else {
 		returnText = "\"" + messageText + "\" is not a valid command."
 		botPrePayload = {text : returnText};
@@ -69,6 +67,26 @@ function karma(item){
 	}
 }
 
+function karmaVote(item){
+	currentKarmaValue = "null0";
+	var value = "nullv"
+	if(client.EXISTS(item)==1){
+		client.GET(item, function(err,res){
+			value=String.toString(res); 
+			currentKarmaValue = res; 
+			console.log("client.GET-res of " + item + ": "+ res);
+			console.log("Delivering Payload...");
+			returnText = "Thanks! " + decodeURIComponent(item) + "'s karma is " + currentKarmaValue; 
+			botPrePayload = {text : returnText};
+		});
+		console.log("cKV: "+ value);
+		if(value!="nullv"){
+			return value;
+		}
+	} else {
+		return "Item not found!";
+	}
+}
 
 function processVoteMessage(msg){
 	var message = encodeURIComponent(msg);
