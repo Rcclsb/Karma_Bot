@@ -68,7 +68,7 @@ function karma(item) {
     console.log("Item: " + item);
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (parseInt(res) === 1 && item !== username) {
+        if (parseInt(res) === 1) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
