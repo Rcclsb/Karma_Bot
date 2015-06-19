@@ -16,7 +16,7 @@ client.on("error", function (err) {console.log("REDIS CLIENT ERROR--> " + err);}
 module.exports = function (req, res, next) {
     messageText = req.body.text.replace("  ", "++");
     username = "<@" + req.body.user_id + ">";
-    console.log("<@" + username + ">");
+    console.log(username);
     messageText = messageText.substring(slackBotCall.length, messageText.length);
     username = encodeURIComponent(username);
     returnText = "defaultReturnText";
@@ -114,6 +114,8 @@ function karmaVote(item) {
 
 function processVoteMessage(msg) {
     var message = encodeURIComponent(msg);
+    console.log("Item to vote: " + message.substring(0, message.search(positiveKey)));
+    console.log("Current User ID: " + username);
     if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) !== username) {
         vote(message.substring(0, message.search(positiveKey)), 1);
     } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) !== username) {
