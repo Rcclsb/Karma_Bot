@@ -77,7 +77,7 @@ function karma(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
-        } else if {
+        } else if (res === 1) {
             console.log("Preparing Payload...");
             returnText = "Sorry! You cannot vote for yourself." ;
             botPrePayload = {text: returnText};
