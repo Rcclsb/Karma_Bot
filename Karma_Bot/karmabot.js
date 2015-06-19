@@ -15,8 +15,8 @@ client.on("error", function (err) {console.log("REDIS CLIENT ERROR--> " + err);}
 
 module.exports = function (req, res, next) {
     messageText = req.body.text.replace("  ", "++");
-    username = req.body.user_name;
-    console.log(username);
+    username = req.body.user_id;
+    console.log("<@" + username + ">");
     messageText = messageText.substring(slackBotCall.length, messageText.length);
     returnText = "defaultReturnText";
     botPrePayload = {};
