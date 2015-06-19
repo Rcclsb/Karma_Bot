@@ -90,7 +90,7 @@ function karmaVote(item) {
     var value = "nullv";
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (res === 1) {
+        if (res === 1 && item !== username) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
