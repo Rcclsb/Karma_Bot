@@ -48,13 +48,14 @@ function deliverPayload() {
     botPayload = botPrePayload;
     console.log("Sending Payload... ");
     console.log("Payload Check (returnText): " + returnText);
-    console.log("");
     // avoid infinite loop
     if (messageText !== returnText) {
         console.log("Payload Out.");
+        console.log("");
         return moduleExportsRes.status(200).json(botPayload);
     } else {
         console.log("Payload Denied.");
+        console.log("");
         return moduleExportsRes.status(200).end();
     }
 }
