@@ -10,4 +10,9 @@ This is basically a Slack bot to track karma using a REDIS database as a storage
   </ol>
 </p>
 As for funcitons within the chat:
-Lets take an example of "@xephos"
+<h3>Lets take an example of "@xephos"</h3>
+<ul>
+  <li>To up vote: @xephos++</li>
+  <li>To up vote: @xephos--</li>
+  <li></li>
+</ul>
