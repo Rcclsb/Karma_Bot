@@ -64,23 +64,22 @@ function karma(item) {
     var value = "nullv";
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-    });
-    if (client.EXISTS(item) === 1) {
-        client.GET(item, function (err, res) {
-            value = String.toString(res);
-            currentKarmaValue = res;
-            console.log("client.GET-res of " + item + ": " + res);
+        if (res === 1) {
+            client.GET(item, function (err, res) {
+                value = String.toString(res);
+                currentKarmaValue = res;
+                console.log("client.GET-res of " + item + ": " + res);
+                console.log("Preparing Payload...");
+                returnText = decodeURIComponent(item) + "'s karma is " + currentKarmaValue;
+                botPrePayload = {text: returnText};
+            });
+            console.log("cKV: " + value);
+        } else {
             console.log("Preparing Payload...");
-            returnText = decodeURIComponent(item) + "'s karma is " + currentKarmaValue;
+            returnText = "Sorry! " + decodeURIComponent(item) + " could not be found." ;
             botPrePayload = {text: returnText};
-        });
-        console.log("cKV: " + value);
-        if (value !== "nullv") {
-            return value;
         }
-    } else {
-        return "Item not found!";
-    }
+    });
 }
 
 function karmaVote(item) {
