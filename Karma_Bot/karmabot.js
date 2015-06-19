@@ -77,10 +77,6 @@ function karma(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
-        } else if (res === 1) {
-            console.log("Preparing Payload...");
-            returnText = "Sorry! You cannot vote for yourself." ;
-            botPrePayload = {text: returnText};
         } else {
             console.log("Preparing Payload...");
             returnText = "Sorry! " + decodeURIComponent(item) + " could not be found." ;
@@ -104,6 +100,10 @@ function karmaVote(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
+        } else if (res === 1) {
+            console.log("Preparing Payload...");
+            returnText = "Sorry! You cannot vote for yourself." ;
+            botPrePayload = {text: returnText};
         } else {
             console.log("Preparing Payload...");
             returnText = "Sorry! " + decodeURIComponent(item) + " could not be found." ;
