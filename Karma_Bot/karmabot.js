@@ -22,13 +22,16 @@ module.exports = function (req, res, next) {
     if (processKarmaMessage(messageText) !== "null") {
         processKarmaMessage(messageText);
         setTimeout(function () {
+            console.log("Past Karma Message Path...");
             deliverPayload();
         }, 300);
     } else if (processIsVoteMessage(messageText) !== "null") {
         processVoteMessage(messageText);
         setTimeout(function () {
             karmaVote(messageText.substring(0, messageText.length - 2));
+            console.log("Past Vote Message Path One...");
             setTimeout(function () {
+                console.log("Past Vote Message Path Two...");
                 deliverPayload();
             }, 300);
         }, 250);
