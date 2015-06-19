@@ -114,9 +114,9 @@ function karmaVote(item) {
 
 function processVoteMessage(msg) {
     var message = encodeURIComponent(msg);
-    if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) === username) {
+    if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) !== username) {
         vote(message.substring(0, message.search(positiveKey)), 1);
-    } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) === username) {
+    } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) !== username) {
         vote(message.substring(0, message.search(negativeKey)), -1);
     }
 }
