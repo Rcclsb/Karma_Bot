@@ -21,12 +21,14 @@ module.exports = function (req, res, next) {
     moduleExportsRes = res;
     if (processKarmaMessage(messageText) !== "null") {
         processKarmaMessage(messageText);
+        console.log("In Karma Message...");
         setTimeout(function () {
             console.log("Past Karma Message Path...");
             deliverPayload();
         }, 300);
     } else if (processIsVoteMessage(messageText) !== "null") {
         processVoteMessage(messageText);
+        console.log("In Vote Message...");
         setTimeout(function () {
             karmaVote(messageText.substring(0, messageText.length - 2));
             console.log("Past Vote Message Path One...");
@@ -46,6 +48,7 @@ function deliverPayload() {
     botPayload = botPrePayload;
     console.log("Sending Payload... ");
     console.log("Payload Check (returnText): " + returnText);
+    console.log("");
     // avoid infinite loop
     if (messageText !== returnText) {
         console.log("Payload Out.");
