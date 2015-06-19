@@ -116,6 +116,8 @@ function processVoteMessage(msg) {
     var message = encodeURIComponent(msg);
     console.log("Item to vote: " + message.substring(0, message.search(positiveKey)));
     console.log("Current User ID: " + username);
+    console.log("Positive: " + message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) !== username);
+    console.log("Negative: " + message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) !== username);
     if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) !== username) {
         vote(message.substring(0, message.search(positiveKey)), 1);
     } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) !== username) {
