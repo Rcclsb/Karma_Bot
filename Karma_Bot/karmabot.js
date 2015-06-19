@@ -67,7 +67,7 @@ function karma(item) {
     var value = "nullv";
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (res === 1 && item !== username) {
+        if (parseInt(res) === 1 && item !== username) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
@@ -90,7 +90,7 @@ function karmaVote(item) {
     var value = "nullv";
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (res === 1 && item !== username) {
+        if (parseInt(res) === 1 && item !== username) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
@@ -100,7 +100,7 @@ function karmaVote(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
-        } else if (res === 1) {
+        } else if (parseInt(res) === 1) {
             console.log("Preparing Payload...");
             returnText = "Sorry! You cannot vote for yourself." ;
             botPrePayload = {text: returnText};
