@@ -68,7 +68,7 @@ function karma(item) {
     console.log("Item: " + item);
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (parseInt(res) === 1) {
+        if (parseInt(res) === 1 && item !== username) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
@@ -78,6 +78,15 @@ function karma(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
+        } else if (parseInt(res) === 1) {
+            client.GET(item, function (err, res) {
+                value = String.toString(res);
+                currentKarmaValue = res;
+                console.log("client.GET-res of " + item + ": " + res);
+                console.log("Preparing Payload...");
+                returnText = "Your karma is " + currentKarmaValue;
+                botPrePayload = {text: returnText};
+            });
         } else {
             console.log("Preparing Payload...");
             returnText = "Sorry! " + decodeURIComponent(item) + " could not be found." ;
