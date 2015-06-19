@@ -88,6 +88,7 @@ function karma(item) {
 function karmaVote(item) {
     currentKarmaValue = "null0";
     var value = "nullv";
+    console.log("Item: " + item);
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
         if (parseInt(res) === 1 && item !== username) {
