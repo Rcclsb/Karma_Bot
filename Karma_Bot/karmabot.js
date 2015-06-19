@@ -62,6 +62,7 @@ function deliverPayload() {
 function karma(item) {
     currentKarmaValue = "null0";
     var value = "nullv";
+    console.log(client.EXISTS(item));
     if (client.EXISTS(item) === 1) {
         client.GET(item, function (err, res) {
             value = String.toString(res);
@@ -83,6 +84,7 @@ function karma(item) {
 function karmaVote(item) {
     currentKarmaValue = "null0";
     var value = "nullv";
+    console.log(client.EXISTS(item));
     if (client.EXISTS(item) === 1) {
         client.GET(item, function (err, res) {
             value = String.toString(res);
