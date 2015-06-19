@@ -15,9 +15,10 @@ client.on("error", function (err) {console.log("REDIS CLIENT ERROR--> " + err);}
 
 module.exports = function (req, res, next) {
     messageText = req.body.text.replace("  ", "++");
-    username = req.body.user_id;
+    username = "<@" + req.body.user_id + ">";
     console.log("<@" + username + ">");
     messageText = messageText.substring(slackBotCall.length, messageText.length);
+    username = encodeURIComponent(username);
     returnText = "defaultReturnText";
     botPrePayload = {};
     moduleExportsRes = res;
@@ -66,7 +67,7 @@ function karma(item) {
     var value = "nullv";
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
-        if (res === 1) {
+        if (res === 1 && item !== username) {
             client.GET(item, function (err, res) {
                 value = String.toString(res);
                 currentKarmaValue = res;
@@ -76,6 +77,10 @@ function karma(item) {
                 botPrePayload = {text: returnText};
             });
             console.log("cKV: " + value);
+        } else if {
+            console.log("Preparing Payload...");
+            returnText = "Sorry! You cannot vote for yourself." ;
+            botPrePayload = {text: returnText};
         } else {
             console.log("Preparing Payload...");
             returnText = "Sorry! " + decodeURIComponent(item) + " could not be found." ;
@@ -109,9 +114,9 @@ function karmaVote(item) {
 
 function processVoteMessage(msg) {
     var message = encodeURIComponent(msg);
-    if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1) {
+    if (message.search(positiveKey) > -1 && message.substring(0, message.search(positiveKey)).search("%20") === -1 && message.substring(0, message.search(positiveKey)) === username) {
         vote(message.substring(0, message.search(positiveKey)), 1);
-    } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1) {
+    } else if (message.search(negativeKey) > -1 && message.substring(0, message.search(negativeKey)).search("%20") === -1 && message.substring(0, message.search(negativeKey)) === username) {
         vote(message.substring(0, message.search(negativeKey)), -1);
     }
 }
