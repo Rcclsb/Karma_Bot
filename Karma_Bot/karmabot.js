@@ -65,6 +65,8 @@ function deliverPayload() {
 function karma(item) {
     currentKarmaValue = "null0";
     var value = "nullv";
+    item = encodeURIComponent(item);
+    console.log("Item: " + item);
     client.EXISTS(item, function (err, res) {
         console.log("Main>Karma>client.EXISTS>res = " + res);
         if (parseInt(res) === 1 && item !== username) {
