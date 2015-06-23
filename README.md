@@ -21,11 +21,18 @@ As for funcitons within the chat:
 <p>
     This function processes the message sent from the Slack outgoing webhooks.
 </p>
+
 <h4>deliverPayload()</h4>
 <p>
     This function takes the botPrePayload created in module.exports and sends it out as a response to Slack.
 </p>
-<h4>karma()</h4>
+
+<h4>karma(item)</h4>
+<p>
+    This processes the input from the if statement when the function .
+</p>
+
+<h4>karmaVote(item)</h4>
 <p>
     This processes the input from the if statement when the function .
 </p>
