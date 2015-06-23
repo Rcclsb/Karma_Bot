@@ -46,3 +46,18 @@ As for funcitons within the chat:
 <p>
     This is used to check if something is a vote message within module.exports.
 </p>
+
+<h4>processKarmaMessage(msg)</h4>
+<p>
+    This is used to check if something is a karma value message within module.exports. This is also used to return the karma value of an item.
+</p>
+
+<h4>vote(item, ballot)</h4>
+<p>
+    This just a simple function to pass from processVoteMessage to addValue.
+</p>
+
+<h4>addItem(item, value)</h4>
+<p>
+    This hits the REDIS server and adds or subtracts the value.
+</p>
