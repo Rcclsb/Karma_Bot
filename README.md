@@ -29,10 +29,20 @@ As for funcitons within the chat:
 
 <h4>karma(item)</h4>
 <p>
-    This processes the input from the if statement when the function .
+    This processes the input from the if statement when the text is for karma value.
 </p>
 
 <h4>karmaVote(item)</h4>
 <p>
-    This processes the input from the if statement when the function .
+    This processes the input from the if statement when the text is from a vote.
+</p>
+
+<h4>processVoteMessage(msg)</h4>
+<p>
+    This votes for or against someone based off of the msg inserted.
+</p>
+
+<h4>processIsVoteMessage(msg)</h4>
+<p>
+    This is used to check if something is a vote message within module.exports.
 </p>
