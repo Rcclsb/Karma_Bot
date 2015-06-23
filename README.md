@@ -13,6 +13,6 @@ As for funcitons within the chat:
 <h3>Lets take an example of "@xephos"</h3>
 <ul>
   <li>To up vote: @xephos++</li>
-  <li>To up vote: @xephos--</li>
-  <li></li>
+  <li>To down vote: @xephos--</li>
+  <li>To check karma: karma value @xephos</li>
 </ul>
